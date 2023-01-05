@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if指令</title>
+  </head>
+  
+  <body>
+    <div id="app">
+      <input type="button" value="切换显示" @click="toggleIsShow">
+      <p v-if="isShow">jack</p>
+      <p v-show="isShow">jack v-show修饰</p> <!-- 经常切换就用这个-->
+      <h2 v-if="temperature>=35">热死了</h2>
+    </div>
+      <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+        var app = new Vue({
+          el:"#app",
+          data:{
+            isShow:false,
+            temperature:20
+          },
+          methods:{
+            toggleIsShow:function(){
+              this.isShow=!this.isShow;
+            }
+          }
+        })
+      </script>
+  </body>
+</html>
