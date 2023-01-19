@@ -7,7 +7,7 @@
 
 内容见“CDN方式引入vue”文件夹
 
-###  "<script src>"方式
+###  "js"方式
 
-内容见“script方式引入vue”文件夹
+内容见“js方式引入vue”文件夹
 
