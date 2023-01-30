@@ -12,9 +12,9 @@
 				自定义指令总结：
 						一、定义语法：
 									(1).局部指令：
-												new Vue({															new Vue({
+												new Vue({								new Vue({
 													directives:{指令名:配置对象}   或   		directives{指令名:回调函数}
-												}) 																		})
+												}) 										})
 									(2).全局指令：
 													Vue.directive(指令名,配置对象) 或   Vue.directive(指令名,回调函数)
 
@@ -66,12 +66,12 @@
 			},
 			directives:{
 				//big函数何时会被调用？1.指令与元素成功绑定时（一上来）。2.指令所在的模板被重新解析时。
-				/* 'big-number'(element,binding){
+				/* 'big-number'(element,binding){ //完整写法是要加单引号的，平时的写法是简写形式，当遇到多个单词的时候，需要使用完整写法。
 					// console.log('big')
 					element.innerText = binding.value * 10
 				}, */
 				big(element,binding){
-					console.log('big',this) //注意此处的this是window
+					console.log('big',this) //注意此处的this是window，指令回调的this都是window
 					// console.log('big')
 					element.innerText = binding.value * 10
 				},
