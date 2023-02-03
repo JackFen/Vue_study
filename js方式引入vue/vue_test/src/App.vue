@@ -1,31 +1,72 @@
 <template>
   <div>
-    <h1 v-text="msg" ref="title"></h1>
-    <button @click="showDOM" ref="btn">点我输出上方的DOM元素</button>
-    <School ref="sch"/>
+    <div id="root">
+      <div class="todo-container">
+        <div class="todo-wrap">
+          <MyHeader />
+          <MyList />
+          <MyFooter />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 //引入组件
-import School from "./components/School.vue";
+import MyHeader from "./components/MyHeader.vue";
+import MyList from "./components/MyList.vue";
+import MyFooter from "./components/MyFooter.vue";
 
 export default {
   name: "App",
-  data() {
-    return {
-      msg:'欢迎学习vue'
-    }
-  },
-  components: {
-    School
-  },
-  methods:{
-    showDOM(){
-      console.log(this.$refs)
-      console.log(this.$refs.title) //真实DOM元素
-      console.log(this.$refs.sch) //School组件的实例对象(vc)
-    }
-  }
+  components: { MyHeader, MyList, MyFooter },
 };
 </script>
+
+<style>
+/*base*/
+body {
+  background: #fff;
+}
+
+.btn {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #da4f49;
+  border: 1px solid #bd362f;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #bd362f;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.todo-container {
+  width: 600px;
+  margin: 0 auto;
+}
+.todo-container .todo-wrap {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+</style>
