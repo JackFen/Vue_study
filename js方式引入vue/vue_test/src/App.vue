@@ -3,9 +3,9 @@
     <div id="root">
       <div class="todo-container">
         <div class="todo-wrap">
-          <MyHeader />
-          <MyList />
-          <MyFooter />
+          <MyHeader :addToDo="addToDo" />
+          <MyList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
+          <MyFooter :todos="todos"/>
         </div>
       </div>
     </div>
@@ -21,6 +21,33 @@ import MyFooter from "./components/MyFooter.vue";
 export default {
   name: "App",
   components: { MyHeader, MyList, MyFooter },
+  data() {
+    return {
+      todos: [
+        { id: "001", title: "吃饭", done: true },
+        { id: "002", title: "睡觉", done: false },
+        { id: "003", title: "打豆豆", done: true },
+      ],
+    };
+  },
+  methods: {
+    // 添加一个todo
+    addToDo(todoObj) {
+      this.todos.unshift(todoObj);
+    },
+    // 勾选or取消勾选一个todo
+    checkTodo(id) {
+      this.todos.forEach((todo) => {
+        if (todo.id == id) {
+          todo.done = !todo.done;
+        }
+      });
+    },
+    // 删除一个todo
+    deleteTodo(id){
+      this.todos = this.todos.filter( todo => todo.id !== id )
+    }
+  },
 };
 </script>
 
@@ -68,5 +95,4 @@ body {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
-
 </style>
