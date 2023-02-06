@@ -3,6 +3,7 @@
   <div class="demo">
     <h2>学校名称:{{ name }}</h2>
     <h2>学校地址:{{ address }}</h2>
+    <button @click="sendSchoolName">把学校名给App</button>
   </div>
 </template>
 
@@ -16,16 +17,13 @@ export default {
       address: "河北",
     };
   },
-  mounted() {
-    //当前this是vm
-    // 绑定hello点击事件
-    this.$bus.$on('hello',(data)=>{
-      console.log('我是School组件，收到了数据',data)
-    })
+  props:['getSchoolName'],
+  methods: {
+    sendSchoolName(){
+      this.getSchoolName(this.name)
+    }
   },
-  beforeDestroy(){
-    this.$bus.$off('hello')
-  }
+  
 };
 </script>
 
