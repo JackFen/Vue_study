@@ -7,8 +7,6 @@ import Vue from 'vue'
 import App from './App.vue'
 // 引入插件
 import vueResource from 'vue-resource'
-// 引入store
-import store from './store/index'
 
 //关闭vue的生产提示
 Vue.config.productionTip = false
@@ -21,7 +19,6 @@ Vue.use(vueResource)
 new Vue({
   // 完成了将App组件放入容器中的功能
   render: h => h(App),
-  store,
   beforeCreate(){
     Vue.prototype.$bus=this //安装全局事件总线
   }
